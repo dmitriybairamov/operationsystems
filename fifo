@@ -30,18 +30,18 @@ int main() {
                 close(fd);
                 printf("строка записана в FIFO. процесс родитель заканчивает работу\n");
         }
-        else {
-                if((fd = open(name, O_RDONLY)) < 0) {
-                        printf("не удалость открыть FIFO для чтения\n");
-                        exit(-1);
-                }
-                size = read(fd, resstring, 13);
-                if(size != 13) {
-                        printf("не удалось прочитать всю строку\n");
-                        exit(-1);
-                }
+                else {
+                        if((fd = open(name, O_RDONLY)) < 0) {
+                                printf("не удалость открыть FIFO для чтения\n");
+                                exit(-1);
+                        }
+                        size = read(fd, resstring, 13);
+                        if(size != 13) {
+                                printf("не удалось прочитать всю строку\n");
+                                exit(-1);
+                                }
                 printf("Прочитаная строка: %s Дочерный процесс завершает работу\n", resstring);
                 close(fd);
-        }
+                }        
         return 0;
 }
